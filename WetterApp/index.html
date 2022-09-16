@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktuelles Wetter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <div class="abfrage">Für welche Stadt möchtest du das aktuelle Wetter wissen?</div>
+
+        <label for="cityName">Gebe den Namen der Stadt ein und klicke auf <b>Senden</b></label>
+        <input type="text" id="cityName" name="cityName">
+        <button id="sendData">Senden</button>
+        <div>
+            <h1>Das Wetter in <span class="city"></span></h1>
+        </div>
+        <div class="main">
+            Aktuelle Temperatur: <span class="temperature"></span> °C, gefühlt: <span class="tempfe"></span> °C
+        </div>
+        <div class="main">Luftfeuchtigkeit: <span class="humidity"></span> %
+        </div>
+        <div>
+            <img src="http://openweathermap.org/img/wn/04n@2x.png">
+        </div>
+        <div id="akt">
+            Letzte Aktualisierung: <span class="time"></span>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

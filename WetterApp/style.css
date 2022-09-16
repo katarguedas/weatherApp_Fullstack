@@ -1,0 +1,40 @@
+body {
+    background-color: rgb(66, 136, 168);
+    /* background-color: rgb(66, 136, 168); */
+    color: rgb(226, 244, 248);
+}
+.app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.abfrage {
+    margin-top: 30px;
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+label {
+    font-size: 20px;
+}
+#sendData {
+    margin: 6px;
+
+}
+.main {
+    font-size: 24px;
+    margin-bottom: 10px;;
+}
+
+#akt {
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+#test {
+    margin: 30px;
+}
+input {
+    font-size: 20px;
+    margin: 10px;
+}
