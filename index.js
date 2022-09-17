@@ -8,7 +8,15 @@ const port = 3001;
 //------------------------------------------------------------
 // Uhrzeit:
 const dt = DateTime.now();
-const time = dt.toLocaleString(DateTime.TIME_SIMPLE); 
+const time = dt.toLocaleString(DateTime.TIME_SIMPLE);
+const date = dt.toLocaleString(DateTime.DATE_FULL);
+const obj = { 
+    time: time,
+    date: date
+}
+console.log(obj);
+const dat = JSON.stringify(obj);
+console.log("Typ:",typeof dat);
 
 // Variablen für Wetterabfrage:
 const units = "metric";
@@ -23,30 +31,29 @@ app.use(cors())
 
 // Uhrzeit:
 app.get('/uhrzeit', (req, res) => {
-    res.status(200).send(time)
-    // res.send(time)
+    res.status(200).send(dat)
 })
 
-
 // Weather:
-app.get('/weather/:city?', async (req, res) => {       // Function als 'async'
+app.get('/weather', async (req, res) => {       // Function als 'async'
     // const cityName = req.params.city || "Berlin";
-    const cityName = req.params.city;
-    // let url = `${urlConst}q=${encodeURI(city)}&units=${units}&appid=${id}`;
-    let url = `${urlConst}q=${encodeURI(cityName)}&units=${units}&appid=${id}`;
+    // const cityName = req.params.city;
+    const cityName = req.query.city;  // hierfür müsste Frontend angepasst werden..?
+    // let url = `${urlConst}q=${encodeURI(cityName)}&units=${units}&appid=${id}`;      // 2. für req.params
+    let url = `${urlConst}q=${encodeURI(cityName)}&units=${units}&appid=${id}`;  // 1. für req.query
     // console.log(url);
 
     let response = await fetch(url);
     const data = await response.json();
-    
+
     // console.log("Daten:", data);
     res.status(200).send(data);
-  })
+})
 
 
-  app.get('/health-ckeck', (req, res) => {
+app.get('/health-ckeck', (req, res) => {
     res.status(200).send('OK. Alles gut.')
-  })
+})
 
 // Übungen / Beispiele:
 app.get('/', (req, res) => {
@@ -56,7 +63,7 @@ app.get('/test', (req, res) => {
     res.send('Test!')
 })
 app.get('/dim', (req, res) => {
-    const result = 1+1;                 // Integer können nicht ausgegeben werden
+    const result = 1 + 1;                 // Integer können nicht ausgegeben werden
     res.status(200).send(result.toString())     // <=   diese Form bevorzugen
 })
 

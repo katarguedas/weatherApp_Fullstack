@@ -13,7 +13,7 @@ element.addEventListener("click", start);
 
 function start() {
     getData();
-    setInterval(getData, 12000);
+    setInterval(getData, 25000);
 }
 // -----------------------------------------------
 
@@ -26,10 +26,14 @@ const getCity = () => {
 
 async function getData() {
 
+
     getCity();
 
-    const url1 = "http://localhost:3001/weather/"
-    const url = `${url1}${encodeURI(cityName)}`
+    // const url1 = "http://localhost:3001/weather/"    // 1. für req.params.
+    const url1 = "http://localhost:3001/weather"        // 2. für req.query.
+    // const url = `${url1}${encodeURI(cityName)}`      // 1. für req.params.
+    const url = url1 + "?city=" + cityName;             // 2. für req.query.
+
     console.log("------");
     console.log("URL:", url);
 
@@ -51,15 +55,13 @@ async function getData() {
         let imgSrc = `http://openweathermap.org/img/wn/${icon}@2x.png`;
         document.querySelector("img").src = imgSrc;
 
-        const date = new Date();
-        const Datum = date.toDateString();
-        console.log(Datum);
-        const Zeit = date.toTimeString();
-        document.querySelector(".time").innerText = `Am ${Datum} um ${Zeit}`;
-    }
+    const urlTime = "http://localhost:3001/uhrzeit";
+    let res = await fetch(urlTime);
+    const dat = await res.json();
+    document.querySelector(".time").innerText = `Am ${dat.date} um ${dat.time}`;
+
+     }
 }
-
-
 
 
 
