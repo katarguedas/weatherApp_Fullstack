@@ -21,7 +21,7 @@ console.log("Typ:",typeof dat);
 // Variablen für Wetterabfrage:
 const units = "metric";
 const urlConst = "https://api.openweathermap.org/data/2.5/weather?";
-const id = "fd85415ecb728585e2baaa8a4da00e06";
+const id = "xxx";
 
 // --------------- MIDDLEWARE: -------------------------------
 
